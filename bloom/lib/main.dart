@@ -1,6 +1,7 @@
 import 'package:bloom/fruit.dart';
 import 'package:flutter/material.dart';
 
+
 void main() {
   runApp(MyApp());
 }
@@ -49,19 +50,20 @@ class _BloomPageState extends State<BloomPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            SizedBox(height: 20,),
             AnimatedOpacity(
               opacity: _opacity,
               duration: Duration(seconds: 2),
               child: Text(
                 'Bloom',
                 style: TextStyle(
-                  fontSize: 60,
+                  fontSize: 80,
                   fontWeight: FontWeight.w900,
                   color: Color.fromARGB(255, 35, 230, 58),
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 30),
             Transform(
               alignment: Alignment.center,
               transform: Matrix4.identity()..rotateX(0.1)..rotateY(0.1),
@@ -75,7 +77,7 @@ class _BloomPageState extends State<BloomPage> {
                 },
                 child: Container(
                   width: 300,
-                  height: 40,
+                  height: 80,
                   decoration: BoxDecoration(
                     color: Color.fromARGB(255, 227, 63, 178),
                     borderRadius: BorderRadius.circular(20),

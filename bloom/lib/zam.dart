@@ -1,17 +1,15 @@
 import 'package:bloom/emage.dart';
-import 'package:bloom/zam.dart';
 import 'package:flutter/material.dart';
 import 'package:confetti/confetti.dart';
 
-
-class HomeItemsPage extends StatefulWidget {
-  const HomeItemsPage({super.key});
+class OfficeItemsPage extends StatefulWidget {
+  const OfficeItemsPage({super.key});
 
   @override
-  State<HomeItemsPage> createState() => _HomeItemsPageState();
+  State<OfficeItemsPage> createState() => _OfficeItemsPageState();
 }
 
-class _HomeItemsPageState extends State<HomeItemsPage> with SingleTickerProviderStateMixin {
+class _OfficeItemsPageState extends State<OfficeItemsPage> with SingleTickerProviderStateMixin {
   final ConfettiController _confettiController =
       ConfettiController(duration: const Duration(seconds: 5));
 
@@ -20,39 +18,38 @@ class _HomeItemsPageState extends State<HomeItemsPage> with SingleTickerProvider
   String _message = '';
   bool _isTapped = false;
 
-  final List<Map<String, String>> homeItems = [
+  final List<Map<String, String>> officeItems = [
     {
-      'item': 'TV',
-      'imageUrl': 'https://img.icons8.com/ios-filled/50/000000/tv.png',
-    },
-    {
-      'item': 'Phone',
-      'imageUrl': 'https://img.icons8.com/ios-filled/50/000000/phone.png',
+      'item': 'Desk',
+      'imageUrl': 'https://img.icons8.com/ios-filled/100/000000/desk.png',
     },
     {
-      'item': 'Laptop',
-      'imageUrl': 'https://img.icons8.com/ios-filled/50/000000/laptop.png',
+      'item': 'Chair',
+      'imageUrl': 'https://cdn-icons-png.flaticon.com/512/501/501849.png',
     },
     {
-      'item': 'Washing ',
-      'imageUrl': 'https://img.icons8.com/ios-filled/50/000000/washing-machine.png',
-    },
-     {
-      'item': ' Cleaner',
-      'imageUrl': 'https://img.icons8.com/ios-filled/50/000000/vacuum-cleaner.png',
+      'item': 'Computer',
+      'imageUrl': 'https://img.icons8.com/ios-filled/100/000000/computer.png',
     },
     {
-      'item': 'Toaster',
-      'imageUrl': 'https://img.icons8.com/ios-filled/50/000000/toaster.png',
+      'item': 'Printer',
+      'imageUrl': 'https://icon-library.com/images/printer-icon-png/printer-icon-png-9.jpg',
     },
-    // Add more items as needed
+    {
+      'item': 'Scanner',
+      'imageUrl': 'https://img.icons8.com/ios-filled/100/000000/scanner.png',
+    },
+    {
+      'item': 'Projector',
+      'imageUrl': 'https://cdn-icons-png.flaticon.com/512/711/711315.png',
+    },
   ];
 
   void _showItemDetails(Map<String, String> item) {
     setState(() {
       _currentItem = item['item']!;
       _currentItemImage = item['imageUrl']!;
-      _message = 'Nice choice!';
+      _message = 'Great choice!';
       _isTapped = true;
 
       _confettiController.play();
@@ -86,7 +83,7 @@ class _HomeItemsPageState extends State<HomeItemsPage> with SingleTickerProvider
           ),
         ),
         title: Text(
-          "Home Items Game",
+          "Office Items Game",
           style: TextStyle(fontSize: 30, fontWeight: FontWeight.w600, fontStyle: FontStyle.italic),
         ),
       ),
@@ -108,11 +105,11 @@ class _HomeItemsPageState extends State<HomeItemsPage> with SingleTickerProvider
                 crossAxisSpacing: 10.0,
                 mainAxisSpacing: 10.0,
               ),
-              itemCount: homeItems.length,
+              itemCount: officeItems.length,
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
-                    _showItemDetails(homeItems[index]);
+                    _showItemDetails(officeItems[index]);
                   },
                   child: AnimatedContainer(
                     duration: Duration(milliseconds: 400),
@@ -131,10 +128,10 @@ class _HomeItemsPageState extends State<HomeItemsPage> with SingleTickerProvider
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          homeItems[index]['item']!,
+                          officeItems[index]['item']!,
                           style: TextStyle(fontSize: 24),
                         ),
-                        if (_currentItem == homeItems[index]['item'])
+                        if (_currentItem == officeItems[index]['item'])
                           Padding(
                             padding: const EdgeInsets.only(top: 10),
                             child: Image.network(_currentItemImage, height: 60),
@@ -150,7 +147,7 @@ class _HomeItemsPageState extends State<HomeItemsPage> with SingleTickerProvider
             padding: const EdgeInsets.only(bottom: 30),
             child: InkWell(
               onTap: () {
-               Navigator.push(context, MaterialPageRoute(builder: (context)=> OfficeItemsPage())) ;// Implement action for "Let's Go" button
+                Navigator.push(context, MaterialPageRoute(builder: (context) => EmotionsPage()));
               },
               child: Container(
                 width: 300,

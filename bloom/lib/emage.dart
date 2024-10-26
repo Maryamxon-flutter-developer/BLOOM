@@ -1,4 +1,5 @@
-import 'package:bloom/xc.dart';
+import 'package:bloom/small.dart';
+
 import 'package:flutter/material.dart';
 import 'package:confetti/confetti.dart';
 
@@ -154,7 +155,7 @@ class _EmotionsPageState extends State<EmotionsPage> with SingleTickerProviderSt
             padding: const EdgeInsets.only(bottom: 30),
             child: InkWell(
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => MyWidget())); // Tugma harakati
+                Navigator.push(context, MaterialPageRoute(builder: (context) => FavoriteQuotesPage())); // Tugma harakati
               },
               child: Container(
                 width: 300,

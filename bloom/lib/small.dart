@@ -1,58 +1,57 @@
-import 'package:bloom/emage.dart';
-import 'package:bloom/zam.dart';
+
+import 'package:bloom/xc.dart';
 import 'package:flutter/material.dart';
 import 'package:confetti/confetti.dart';
 
-
-class HomeItemsPage extends StatefulWidget {
-  const HomeItemsPage({super.key});
+class FavoriteQuotesPage extends StatefulWidget {
+  const FavoriteQuotesPage({super.key});
 
   @override
-  State<HomeItemsPage> createState() => _HomeItemsPageState();
+  State<FavoriteQuotesPage> createState() => _FavoriteQuotesPageState();
 }
 
-class _HomeItemsPageState extends State<HomeItemsPage> with SingleTickerProviderStateMixin {
+class _FavoriteQuotesPageState extends State<FavoriteQuotesPage> with SingleTickerProviderStateMixin {
   final ConfettiController _confettiController =
       ConfettiController(duration: const Duration(seconds: 5));
 
-  String _currentItem = '';
-  String _currentItemImage = '';
+  String _currentQuote = '';
+  String _currentQuoteImage = '';
   String _message = '';
   bool _isTapped = false;
 
-  final List<Map<String, String>> homeItems = [
+  final List<Map<String, String>> favoriteQuotes = [
     {
-      'item': 'TV',
-      'imageUrl': 'https://img.icons8.com/ios-filled/50/000000/tv.png',
-    },
-    {
-      'item': 'Phone',
-      'imageUrl': 'https://img.icons8.com/ios-filled/50/000000/phone.png',
+      'quote': 'Believe in yourself!',
+      'imageUrl': 'https://cdn-icons-png.flaticon.com/512/2804/2804199.png',
     },
     {
-      'item': 'Laptop',
-      'imageUrl': 'https://img.icons8.com/ios-filled/50/000000/laptop.png',
+      'quote': 'Stay positive',
+      'imageUrl': 'https://cdn-icons-png.flaticon.com/512/5269/5269898.png',
     },
     {
-      'item': 'Washing ',
-      'imageUrl': 'https://img.icons8.com/ios-filled/50/000000/washing-machine.png',
-    },
-     {
-      'item': ' Cleaner',
-      'imageUrl': 'https://img.icons8.com/ios-filled/50/000000/vacuum-cleaner.png',
+      'quote': 'Keep learning',
+      'imageUrl': 'https://cdn-icons-png.flaticon.com/512/2452/2452184.png',
     },
     {
-      'item': 'Toaster',
-      'imageUrl': 'https://img.icons8.com/ios-filled/50/000000/toaster.png',
+      'quote': 'Be grateful',
+      'imageUrl': 'https://static.thenounproject.com/png/3068034-200.png',
     },
-    // Add more items as needed
+    {
+      'quote': 'Dream big',
+      'imageUrl': 'https://cdn4.iconfinder.com/data/icons/project-management-1-11/65/29-512.png',
+    },
+    {
+      'quote': 'Take action',
+      'imageUrl': 'https://cdn-icons-png.flaticon.com/512/9196/9196093.png',
+    },
+    // Add more quotes as needed
   ];
 
-  void _showItemDetails(Map<String, String> item) {
+  void _showQuoteDetails(Map<String, String> quote) {
     setState(() {
-      _currentItem = item['item']!;
-      _currentItemImage = item['imageUrl']!;
-      _message = 'Nice choice!';
+      _currentQuote = quote['quote']!;
+      _currentQuoteImage = quote['imageUrl']!;
+      _message = 'Inspiring choice!';
       _isTapped = true;
 
       _confettiController.play();
@@ -61,8 +60,8 @@ class _HomeItemsPageState extends State<HomeItemsPage> with SingleTickerProvider
     Future.delayed(const Duration(seconds: 2), () {
       setState(() {
         _isTapped = false;
-        _currentItem = '';
-        _currentItemImage = '';
+        _currentQuote = '';
+        _currentQuoteImage = '';
         _message = '';
       });
     });
@@ -86,7 +85,7 @@ class _HomeItemsPageState extends State<HomeItemsPage> with SingleTickerProvider
           ),
         ),
         title: Text(
-          "Home Items Game",
+          "Favorite Quotes",
           style: TextStyle(fontSize: 30, fontWeight: FontWeight.w600, fontStyle: FontStyle.italic),
         ),
       ),
@@ -108,11 +107,11 @@ class _HomeItemsPageState extends State<HomeItemsPage> with SingleTickerProvider
                 crossAxisSpacing: 10.0,
                 mainAxisSpacing: 10.0,
               ),
-              itemCount: homeItems.length,
+              itemCount: favoriteQuotes.length,
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
-                    _showItemDetails(homeItems[index]);
+                    _showQuoteDetails(favoriteQuotes[index]);
                   },
                   child: AnimatedContainer(
                     duration: Duration(milliseconds: 400),
@@ -131,13 +130,14 @@ class _HomeItemsPageState extends State<HomeItemsPage> with SingleTickerProvider
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          homeItems[index]['item']!,
-                          style: TextStyle(fontSize: 24),
+                          favoriteQuotes[index]['quote']!,
+                          style: TextStyle(fontSize: 18),
+                          textAlign: TextAlign.center,
                         ),
-                        if (_currentItem == homeItems[index]['item'])
+                        if (_currentQuote == favoriteQuotes[index]['quote'])
                           Padding(
                             padding: const EdgeInsets.only(top: 10),
-                            child: Image.network(_currentItemImage, height: 60),
+                            child: Image.network(_currentQuoteImage, height: 60),
                           ),
                       ],
                     ),
@@ -150,7 +150,7 @@ class _HomeItemsPageState extends State<HomeItemsPage> with SingleTickerProvider
             padding: const EdgeInsets.only(bottom: 30),
             child: InkWell(
               onTap: () {
-               Navigator.push(context, MaterialPageRoute(builder: (context)=> OfficeItemsPage())) ;// Implement action for "Let's Go" button
+                Navigator.push(context, MaterialPageRoute(builder: (context) => MyWidget())); // Implement action for "Let's Go" button
               },
               child: Container(
                 width: 300,
